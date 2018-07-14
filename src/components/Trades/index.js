@@ -4,19 +4,31 @@ import { Link } from 'react-router';
 import TradeRequest from '../TradeRequest/index';
 import ProposedTrade from '../ProposedTrade/index';
 import AddItemPage from '../AddItemPage/index';
+import userData from "./../../assets/data/users.json"
 import './styles.sass';
 
 class Trades extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpened: false
+      modalOpened: false,
+      buy_items: [],
+      sell_items: []
     };
   }
 
   componentDidMount() {
     document.body.scrollTop = 0;
     document.querySelector('.menu').classList.remove('open');
+    for (var ind in userData['users']) {
+      var user = userData.users[ind];
+      if (user.id === this.props.params.id) {
+        this.setState({buy_items: {...this.state,buy_items: user.buy_items}});
+        this.setState({sell_items: {...this.state,sell_items: user.sell_items}});
+        console.log("buyitem" + user.buy_items);
+        console.log("buyitem" + this.state.buy_items);
+      }
+    }
   }
 
   closeModal() {

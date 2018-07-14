@@ -1,0 +1,40 @@
+{
+    "items_num" : 2,
+    "items": [
+        {
+            "name": "Butter Chicken",
+            "id": 1,
+            "picture": "butterchick.jpg",
+            "price": "5",
+            "brought": 3
+        },
+        {
+            "name": "KungPao Chicken",
+            "id": 2,
+            "picture": "butterchick.jpg",
+            "price": "4",
+            "brought": 2
+        },
+        {
+            "name": "Jamaican Jerk Chicken",
+            "id": 3,
+            "picture": "jamaicanjerkchick.jpg",
+            "price": "3",
+            "brought": 3
+        },
+        {
+            "name": "Hawaian Pizza",
+            "id": 4,
+            "picture": "hawainpizza.jpg",
+            "price": "2",
+            "brought": 3
+        },
+        {
+            "name": "Japanese Sponge cake",
+            "id": 5,
+            "picture": "butterchick.jpg",
+            "price": "5",
+            "brought": 3
+        }
+    ]
+}
