@@ -1,4 +1,4 @@
-# Decentralized Food Sharing
+# Savour
 
 ## Start Guide
 1. To start the application, clone the application
