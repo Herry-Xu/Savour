@@ -21,7 +21,11 @@
             "buy_items": [],
             "sell_items": [2, 5],
             "rating": "9/10",
-            "type": "seller"
+            "type": "seller",
+            "location": {
+                "lat": "49.286610", 
+                "long": "-123.136516"
+            } 
         }
     ]
 }
