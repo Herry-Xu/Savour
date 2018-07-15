@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './styles.sass';
 import Item from '../Item/index';
+import itemData from "../../assets/data/items.json"
 
 class Homepage extends Component {
   componentDidMount() {
@@ -10,7 +11,7 @@ class Homepage extends Component {
   render() {
     return (
       <main className="main">
-        {"1234567890".split("").map((e, i) => <Item key={i} />)}
+        {itemData['items'].map((item, i) => <Item itemId={item.id} key={item.id} />)}
       </main>
     );
   }
