@@ -9,12 +9,8 @@
             "passwd": "machohack",
             "buy_items": [2, 5],
             "sell_items": [],
-<<<<<<< HEAD
-            "rating": "9/10"
-=======
             "rating": "9/10",
             "type": "buyer"
->>>>>>> market-place
         },
         {
             "name": "Herry Xu",
@@ -24,12 +20,8 @@
             "passwd": "machohack",
             "buy_items": [],
             "sell_items": [2, 5],
-<<<<<<< HEAD
-            "rating": "9/10"
-=======
             "rating": "9/10",
             "type": "seller"
->>>>>>> market-place
         }
     ]
 }
