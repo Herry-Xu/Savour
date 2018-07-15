@@ -10,6 +10,10 @@ import users from '../../assets/data/users.json';
 
 import { browserHistory } from 'react-router';
 
+import Map from '../Map/index';
+
+
+
 class ItemPage extends Component {
   constructor(props) {
     super(props)
@@ -60,34 +64,37 @@ class ItemPage extends Component {
   }
 
   render() {
-
     window.state = this.state;
 
     let picUrl = "/" + this.state.item.picture;
 
     return (
-      <div className="itemPageWrapper">
-        <div className="itemImgWrapper">
-          <img src={picUrl}></img>
+      <div>
+        <div className="itemPageWrapper">
+          <div className="itemImgWrapper">
+            <img src={picUrl}></img>
+          </div>
+          <div className="itemInfoWrapper">
+            <Link className="backLink" to="/">
+              <span className="small">
+                <svg fill="#000000" height="13" viewBox="0 0 18 15" width="13" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M7 10l5 5 5-5z"/>
+                  <path d="M0 0h24v24H0z" fill="none"/>
+                </svg>
+              </span>All Items
+            </Link>
+            <h3 className="itemName">{this.state.item.name}</h3>
+            <p className="itemCost frm">${this.state.item.price}</p>
+            <p className="description">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nulla modi, odit explicabo hic doloremque commodi ab molestiae. Iure voluptatem labore et aliquid soluta inventore expedita quam vel a earum!
+            </p>
+            <p className="seller frm">By <span>{this.state.user.name}</span></p>
+            <p className="seller frm"><span>Seller Rating: {this.state.user.rating}</span></p>
+            <button className="reqTradeBtn normalBtn" onClick={this.orderNow.bind(this)}>Order Now</button>
+          </div>
         </div>
-        <div className="itemInfoWrapper">
-          <Link className="backLink" to="/">
-            <span className="small">
-              <svg fill="#000000" height="13" viewBox="0 0 18 15" width="13" xmlns="http://www.w3.org/2000/svg">
-                <path d="M7 10l5 5 5-5z"/>
-                <path d="M0 0h24v24H0z" fill="none"/>
-              </svg>
-            </span>All Items
-          </Link>
-          <h3 className="itemName">{this.state.item.name}</h3>
-          <p className="itemCost frm">${this.state.item.price}</p>
-          <p className="description">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nulla modi, odit explicabo hic doloremque commodi ab molestiae. Iure voluptatem labore et aliquid soluta inventore expedita quam vel a earum!
-          </p>
-          <p className="seller frm">By <span>{this.state.user.name}</span></p>
-          <p className="seller frm"><span>Seller Rating: {this.state.user.rating}</span></p>
-          <button className="reqTradeBtn normalBtn" onClick={this.orderNow.bind(this)}>Order Now</button>
-        </div>
+
+        <Map/>
       </div>
     );
   }
