@@ -4,20 +4,22 @@
         {
             "name": "Anthony Ho",
             "img": "anthony.jpg",
-            "id": "1234",
+            "id": "1",
             "username": "anthonyho",
             "passwd": "machohack",
             "buy_items": [2, 5],
-            "sell_items": []
+            "sell_items": [],
+            "rating": "9/10"
         },
         {
             "name": "Herry Xu",
             "img": "herry.jpg",
-            "id": "1111",
+            "id": "2",
             "username": "herryxu",
             "passwd": "machohack",
             "buy_items": [],
-            "sell_items": [2, 5]
+            "sell_items": [2, 5],
+            "rating": "9/10"
         }
     ]
 }

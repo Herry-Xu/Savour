@@ -7,5 +7,4 @@ import routes from './routes';
 import './styles/global.sass';
 import './favicon.ico';
 
-
 render(<Router history={browserHistory} routes={routes} />, document.getElementById('app'));
