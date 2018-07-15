@@ -33,6 +33,13 @@ class Login extends Component {
     })
     // if not found, do nothing for now
   }
+
+
+  signOut() {
+    sessionStorage.userId = 0;
+    browserHistory.push('/');
+  }
+ 
  
   render() {
     return (
@@ -49,6 +56,9 @@ class Login extends Component {
           </div>
           <div className="buttonWrapper text-center">
             <button className="saveItemBtn" onClick={this.login}>Login</button>
+          </div>
+          <div className="buttonWrapper text-center">
+            <button className="saveItemBtn" onClick={this.signOut}>Sign Out</button>
           </div>
         </div>
       </div>

@@ -8,6 +8,8 @@ import postings from '../../assets/data/postings.json';
 
 import users from '../../assets/data/users.json';
 
+import { browserHistory } from 'react-router';
+
 class ItemPage extends Component {
   constructor(props) {
     super(props)
@@ -41,6 +43,22 @@ class ItemPage extends Component {
     document.body.scrollTop = 0;
     document.querySelector('.menu').classList.remove('open');
   }
+
+  orderNow() {
+    console.log(this.state);
+    
+    if(sessionStorage.userId == null || parseInt(sessionStorage.userId) < 1) {
+      alert("Please login to place an order.");
+      
+      browserHistory.push('login');
+      
+    } else {
+      console.log("Fulfilling order");
+      // call web3 here
+    }
+
+  }
+
   render() {
 
     window.state = this.state;
@@ -68,7 +86,7 @@ class ItemPage extends Component {
           </p>
           <p className="seller frm">By <span>{this.state.user.name}</span></p>
           <p className="seller frm"><span>Seller Rating: {this.state.user.rating}</span></p>
-          <button className="reqTradeBtn normalBtn">Order Now</button>
+          <button className="reqTradeBtn normalBtn" onClick={this.orderNow.bind(this)}>Order Now</button>
         </div>
       </div>
     );

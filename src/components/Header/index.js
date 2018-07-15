@@ -36,15 +36,15 @@ class Header extends Component {
           Trades
         </Link>
         <Link onlyActiveOnIndex={true} key={4} to="/login" activeClassName="activeNavLink" className="navLink">
-          Login
+          Login / Sign Out
         </Link>
       </div>
     );
 
     this.loggedOutMenu = (
       <div className="menu loginMenu">
-        <Link onlyActiveOnIndex={true} key={5} activeClassName="activeNavLink" className="navLink">
-          LogIn / Sign Up
+        <Link onlyActiveOnIndex={true} key={5} to="/login" activeClassName="activeNavLink" className="navLink">
+          Log In
         </Link>
       </div>
     );
@@ -78,8 +78,8 @@ class Header extends Component {
 
   setNav() {
     // check for auth here
-    const True = true;
-    if (True) {
+    const isLoggedin = sessionStorage.userId != null;
+    if (isLoggedin) {
       this.setState({ nav: this.loggedInMenu });
     } else {
       this.setState({ nav: this.loggedOutMenu });
