@@ -2,10 +2,13 @@ import React, { Component } from 'react';
 import { Link } from 'react-router';
 import { browserHistory } from 'react-router';
 
-import TradeRequest from '../TradeRequest/index';
-import ProposedTrade from '../ProposedTrade/index';
+import OpenOrder from '../OpenOrder/index';
+import ReceivedOrder from '../ReceivedOrder/index';
+import OpenPosting from '../OpenPosting/index';
 import AddItemPage from '../AddItemPage/index';
-import userData from "./../../assets/data/users.json"
+import userData from "./../../assets/data/users.json";
+import postingData from "./../../assets/data/postings.json";
+import orderData from "./../../assets/data/orders.json";
 import './styles.sass';
 
 class Trades extends Component {
@@ -32,26 +35,36 @@ class Trades extends Component {
     document.body.style.marginRight = 0;
   }
 
-  getAllProposedTrades() {
+  getAllReceivedOrder() {
     var self = this;
-    const list = userData.users.map(function (user, i){
-      if(user.id == sessionStorage.getItem("userId")) {
-        return user.buy_items.map((itemId) => <ProposedTrade itemId={itemId} />);
+    const list = orderData.orders.map(function (order, i){
+      if(order.sellerId == sessionStorage.getItem("userId")) {
+        return (<ReceivedOrder orderId={order.id} />);
       }
     });
     console.log("list" + list);
-    return (list);
+    return (
+      <div className="tradeProposedWrapper">
+      <h3 className="unCap">Received Orders</h3>
+      <div className="allProposedTradesWrapper">
+        {list}
+      </div>
+      </div>);
   }
 
-  getAllTradeRequests() {
+  getAllOpenOrder() {
     var self = this;
-    const list = userData.users.map(function (user, i){
-      if(user.id == sessionStorage.getItem("userId")) {
-        return user.sell_items.map((itemId) => <TradeRequest itemId={itemId} />);
+    const list = orderData.orders.map(function (order, i){
+      if(order.buyerId == sessionStorage.getItem("userId")) {
+        return (<OpenOrder orderId={order.id} />);
       }
     });
-    console.log("list" + list);
-    return (list);
+    return (<div className="tradeReqWrapper">
+    <h3 className="unCap">Open Orders</h3>
+    <div className="allTradeRequestsWrapper">
+      {list}
+    </div>
+  </div>);
   }
 
   getModal() {
@@ -70,6 +83,48 @@ class Trades extends Component {
     this.setState({ modalOpened: true });
   }
 
+  getUserInfo(type) {
+    const userId = sessionStorage.getItem("userId");
+    if(userId) {
+      console.log(userData.users);
+      for (var i in userData.users) {
+        if (userData.users[i].id == userId) {
+          console.log(userData.users[i][type]);
+          return userData.users[i][type];
+        }
+      }
+    }
+    return null;
+  }
+
+  getOrders() {
+    const type = this.getUserInfo("type");
+    console.log("user type :" + type);
+    if (type == "seller") {
+      return ([this.loadOpenPosting(), this.getAllReceivedOrder()]);
+    } else {
+      return (this.getAllOpenOrder());
+    }
+  }
+
+  loadOpenPosting() {
+    var self = this;
+    const list = postingData.postings.map(function (posting, i){
+      if(posting.userId == sessionStorage.getItem("userId")) {
+        return <OpenPosting postingId={posting.id} />;
+      }
+    });
+    console.log("list" + list);
+    return (
+      <div className="tradeReqWrapper">
+        <h3 className="unCap">Open Postings</h3>
+        <div className="allTradeRequestsWrapper">
+          {list}
+        </div>
+      </div>
+    );
+  }
+
   render() {
     return (
       <div className="tradesWrapper">
@@ -85,18 +140,7 @@ class Trades extends Component {
           </button>
         </div>
         <div className="tradesInfoWrapper">
-          <div className="tradeReqWrapper">
-            <h3 className="unCap">Trade Requests</h3>
-            <div className="allTradeRequestsWrapper">
-              {this.getAllTradeRequests()}
-            </div>
-          </div>
-          <div className="tradeProposedWrapper">
-            <h3 className="unCap">Trades Proposed</h3>
-            <div className="allProposedTradesWrapper">
-              {this.getAllProposedTrades()}
-            </div>
-          </div>
+          {this.getOrders()}
         </div>
       </div>
     );
