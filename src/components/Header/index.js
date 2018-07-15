@@ -78,12 +78,14 @@ class Header extends Component {
 
   setNav() {
     // check for auth here
-    const isLoggedin = sessionStorage.userId != null;
-    if (isLoggedin) {
-      this.setState({ nav: this.loggedInMenu });
-    } else {
-      this.setState({ nav: this.loggedOutMenu });
-    }
+    // const isLoggedin = sessionStorage.userId != null;
+    // if (isLoggedin) {
+    //   this.setState({ nav: this.loggedInMenu });
+    // } else {
+    //   this.setState({ nav: this.loggedOutMenu });
+    // }
+    this.setState({ nav: this.loggedInMenu });
+
   }
 
   render() {
