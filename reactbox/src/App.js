@@ -15,6 +15,11 @@ class App extends Component {
       storageValue: 0,
       web3: null
     }
+
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleClick = this.handleClick.bind(this);
+
   }
 
   componentWillMount() {
@@ -52,6 +57,9 @@ class App extends Component {
 
     // Get accounts.
     this.state.web3.eth.getAccounts((error, accounts) => {
+
+      console.log(accounts);
+
       simpleStorage.deployed().then((instance) => {
         simpleStorageInstance = instance
 
@@ -63,8 +71,45 @@ class App extends Component {
       }).then((result) => {
         // Update state with the result.
         return this.setState({ storageValue: result.c[0] })
+      }).then((res) => {
+        console.log(res);
+        this.setState({
+          instance: simpleStorageInstance
+        })
       })
     })
+  }
+
+  handleClick(event) {
+    event.preventDefault();
+    console.log(this.state);
+
+    this.state.instance.get()
+      .then((res) => {
+        console.log("received: " + res);
+      })
+  }
+
+  handleChange(event) {
+    let targetName = event.target.name;
+
+    this.setState({ instanceValue: event.target.value })
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+
+
+
+    this.state.instance.set(this.state.instanceValue)
+      .then(res => {
+        console.log(res);
+        alert("Submitted");
+      })
+      .catch(err => {
+        console.log(err);
+        alert("Oops we ran into an error");
+      })
   }
 
   render() {
@@ -85,6 +130,14 @@ class App extends Component {
               <p>The stored value is: {this.state.storageValue}</p>
             </div>
           </div>
+          <button onClick={this.handleClick.bind(this)}>
+            Store Value
+          </button>
+          <br></br>
+          <form onSubmit={this.handleSubmit}>
+            <input type="text" default="Change the smart contract value." onChange={this.handleChange}></input>
+            <input type="submit"></input>
+          </form>
         </main>
       </div>
     );
