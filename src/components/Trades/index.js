@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
+import { browserHistory } from 'react-router';
 
 import TradeRequest from '../TradeRequest/index';
 import ProposedTrade from '../ProposedTrade/index';
@@ -11,24 +12,18 @@ class Trades extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modalOpened: false,
-      buy_items: [],
-      sell_items: []
+      modalOpened: false
     };
   }
 
   componentDidMount() {
+    var userSession = sessionStorage.getItem("userId");
+    if (!userSession) {
+      console.log("no user session");
+      browserHistory.push('login');
+    }
     document.body.scrollTop = 0;
     document.querySelector('.menu').classList.remove('open');
-    for (var ind in userData['users']) {
-      var user = userData.users[ind];
-      if (user.id === this.props.params.id) {
-        this.setState({buy_items: {...this.state,buy_items: user.buy_items}});
-        this.setState({sell_items: {...this.state,sell_items: user.sell_items}});
-        console.log("buyitem" + user.buy_items);
-        console.log("buyitem" + this.state.buy_items);
-      }
-    }
   }
 
   closeModal() {
@@ -38,17 +33,25 @@ class Trades extends Component {
   }
 
   getAllProposedTrades() {
-    return ([
-      <ProposedTrade key="1" />,
-      <ProposedTrade key="2" />
-    ]);
+    var self = this;
+    const list = userData.users.map(function (user, i){
+      if(user.id == sessionStorage.getItem("userId")) {
+        return user.buy_items.map((itemId) => <ProposedTrade itemId={itemId} />);
+      }
+    });
+    console.log("list" + list);
+    return (list);
   }
 
   getAllTradeRequests() {
-    return ([
-      <TradeRequest key="1" />,
-      <TradeRequest key="2" />
-    ]);
+    var self = this;
+    const list = userData.users.map(function (user, i){
+      if(user.id == sessionStorage.getItem("userId")) {
+        return user.sell_items.map((itemId) => <TradeRequest itemId={itemId} />);
+      }
+    });
+    console.log("list" + list);
+    return (list);
   }
 
   getModal() {

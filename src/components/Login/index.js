@@ -27,7 +27,8 @@ class Login extends Component {
     var currentUsername = this.state.username;
     userFromDB.map(function(user){
       if(user.username === currentUsername) {
-        browserHistory.push('trades/' + user.id);
+        sessionStorage.setItem("userId", user.id);
+        browserHistory.push('trades');
       }
     })
     // if not found, do nothing for now
