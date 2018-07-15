@@ -1,0 +1,25 @@
+{
+    "user_num": 2,
+    "users": [
+        {
+            "name": "Anthony Ho",
+            "img": "anthony.jpg",
+            "id": "1",
+            "username": "anthonyho",
+            "passwd": "machohack",
+            "buy_items": [2, 5],
+            "sell_items": [],
+            "rating": "9/10"
+        },
+        {
+            "name": "Herry Xu",
+            "img": "herry.jpg",
+            "id": "2",
+            "username": "herryxu",
+            "passwd": "machohack",
+            "buy_items": [],
+            "sell_items": [2, 5],
+            "rating": "9/10"
+        }
+    ]
+}

@@ -1,0 +1,75 @@
+{
+    "items_num" : 2,
+    "items": [
+        {
+            "name": "Butter Chicken",
+            "id": 1,
+            "picture": "butterchicken.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "KungPao Chicken",
+            "id": 2,
+            "picture": "kungpao.jpg",
+            "price": "4",
+            "bought": 2
+        },
+        {
+            "name": "Jamaican Jerk Chicken",
+            "id": 3,
+            "picture": "jamaicanjerkchick.jpg",
+            "price": "3",
+            "bought": 3
+        },
+        {
+            "name": "Hawaiian Pizza",
+            "id": 4,
+            "picture": "hawaiianpizza.jpg",
+            "price": "2",
+            "bought": 3
+        },
+        {
+            "name": "Japanese Sponge cake",
+            "id": 5,
+            "picture": "japanesespongecake.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "Lasagna",
+            "id": 6,
+            "picture": "lasagna.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "Apple Pie",
+            "id": 7,
+            "picture": "applepie.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "Mac and Cheese",
+            "id": 8,
+            "picture": "macandcheese.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "Chow Mein",
+            "id": 9,
+            "picture": "chowmein.jpg",
+            "price": "5",
+            "bought": 3
+        },
+        {
+            "name": "Pumpkin Pie",
+            "id": 10,
+            "picture": "pumpkinpie.jpg",
+            "price": "5",
+            "bought": 3
+        }
+    ]
+}
