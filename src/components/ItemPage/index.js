@@ -86,7 +86,7 @@ class ItemPage extends Component {
             <h3 className="itemName">{this.state.item.name}</h3>
             <p className="itemCost frm">${this.state.item.price}</p>
             <p className="description">
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ea nulla modi, odit explicabo hic doloremque commodi ab molestiae. Iure voluptatem labore et aliquid soluta inventore expedita quam vel a earum!
+              {this.state.item.desc}
             </p>
             <p className="seller frm">By <span>{this.state.user.name}</span></p>
             <p className="seller frm"><span>Seller Rating: {this.state.user.rating}</span></p>
