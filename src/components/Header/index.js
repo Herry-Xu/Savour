@@ -33,7 +33,7 @@ class Header extends Component {
           Profile
         </Link> */}
         <Link onlyActiveOnIndex={true} key={3} to="/trades" activeClassName="activeNavLink" className="navLink">
-          Trades
+          Orders
         </Link>
         <Link onlyActiveOnIndex={true} key={4} to="/login" activeClassName="activeNavLink" className="navLink">
           Login
