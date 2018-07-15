@@ -29,22 +29,22 @@ class Header extends Component {
         <Link onlyActiveOnIndex={true} key={1} to="/" activeClassName="activeNavLink" className="navLink">
           Home
         </Link>
-        <Link onlyActiveOnIndex={true} key={2} to="/profile" activeClassName="activeNavLink" className="navLink">
+        {/* <Link onlyActiveOnIndex={true} key={2} to="/profile" activeClassName="activeNavLink" className="navLink">
           Profile
-        </Link>
+        </Link> */}
         <Link onlyActiveOnIndex={true} key={3} to="/trades" activeClassName="activeNavLink" className="navLink">
-          Trades
+          Orders
         </Link>
         <Link onlyActiveOnIndex={true} key={4} to="/login" activeClassName="activeNavLink" className="navLink">
-          Login
+          Login / Sign Out
         </Link>
       </div>
     );
 
     this.loggedOutMenu = (
       <div className="menu loginMenu">
-        <Link onlyActiveOnIndex={true} key={5} activeClassName="activeNavLink" className="navLink">
-          LogIn / Sign Up
+        <Link onlyActiveOnIndex={true} key={5} to="/login" activeClassName="activeNavLink" className="navLink">
+          Log In
         </Link>
       </div>
     );
@@ -78,12 +78,14 @@ class Header extends Component {
 
   setNav() {
     // check for auth here
-    const True = true;
-    if (True) {
-      this.setState({ nav: this.loggedInMenu });
-    } else {
-      this.setState({ nav: this.loggedOutMenu });
-    }
+    // const isLoggedin = sessionStorage.userId != null;
+    // if (isLoggedin) {
+    //   this.setState({ nav: this.loggedInMenu });
+    // } else {
+    //   this.setState({ nav: this.loggedOutMenu });
+    // }
+    this.setState({ nav: this.loggedInMenu });
+
   }
 
   render() {
@@ -91,7 +93,7 @@ class Header extends Component {
       <header className="header">
         <h1>
           <Link onlyActiveOnIndex={true} to="/" className="logo">
-            Trader
+            Savour
           </Link>
         </h1>
         {this.state.menuActive ? this.menuButton: ""}

@@ -15,6 +15,7 @@ class App extends React.Component {
        var web3 = new Web3(new Web3.providers.HttpProvider("http://localhost:7545"));
        window.web3 = web3;
 
+<<<<<<< HEAD
        this.web3 = web3;
        window.Web3 = Web3;
 
@@ -55,3 +56,6 @@ class App extends React.Component {
 
 ReactDOM.render(<App />, document.getElementById('app'));
 registerServiceWorker();
+=======
+render(<Router history={browserHistory} routes={routes} />, document.getElementById('app'));
+>>>>>>> staging
