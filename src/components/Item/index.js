@@ -2,7 +2,11 @@ import React, { Component } from 'react';
 // import {Link} from 'react-router';
 import { browserHistory } from 'react-router';
 
-import data from '../../assets/data/items.json';
+import items from '../../assets/data/items.json';
+
+import postings from '../../assets/data/postings.json';
+
+import users from '../../assets/data/users.json';
 
 import './styles.sass';
 
@@ -11,17 +15,27 @@ class Item extends Component {
   constructor(props) {
     super(props);
 
-    console.log(props);
+    window.items = items;
+    window.postings = postings;
+    window.users = users;
+    window.props = props;
 
-    console.log(data);
+    let thisPosting = postings.postings.find(function(posting) {
+      return parseInt(posting.id) == parseInt(props.postingId);
+    })
 
-    let thisItem = data.items.find(function(item) {
-      return parseInt(item.id) == parseInt(props.itemId);
+    let thisItem = items.items.find(function(item) {
+      return parseInt(item.id) == parseInt(thisPosting.itemId);
+    })
+
+    let thisUser = users.users.find(function(user){
+      return parseInt(user.id) == parseInt(thisPosting.userId);
     })
 
     this.state = {
-      id: this.props.itemId,
-      item: thisItem
+      id: this.props.postingId,
+      item: thisItem,
+      user: thisUser
     }
   }
 
@@ -31,26 +45,24 @@ class Item extends Component {
 
     let picUrl = this.state.item.picture;
 
+    console.log("picUrl = " + picUrl);
+
     return(
       <div className="item">
         <div className="content" id={this.state.id} onClick={()=>{
-          browserHistory.push('/item/123');
+          browserHistory.push('/item/' + this.state.id);
         }} >
           <img src={picUrl}></img>
         </div>
-        <p>{this.state.item.name} - ${this.state.item.price}</p>
+        <p>{this.state.item.name} - ${this.state.id}</p>
+        <div className="itemInfoFlex">
+          <div>{this.state.user.name}</div>
+          <div className="rating">{this.state.user.rating}</div>
+        </div>
       </div>
     );
   }
 
-  componentDidMount() {
-    // let doc = document.getElementById(this.state.id);
-    // console.log(doc);
-
-    // doc.style.backgroundImage = `url(${this.state.item.picture})`;
-
-    // let imgRoute = "../../assets/images/pumpkinpie.jpg";
-  }
 }
 
 export default Item;
