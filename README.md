@@ -1,6 +1,6 @@
 # Savour
 
-![alt text](https://raw.githubusercontent.com/Herry-Xu/Savour/master/path/to/img.png)
+![alt text](https://raw.githubusercontent.com/Herry-Xu/Savour/master/public/savour.png)
 
 A P2P decentralized platform that allows users to share homecooked food without any commission fees. It is built with React, Node.js, Solidity on top of Ethereum network. It uses escrow smart contracts on the EVM to remove the need of a middleman during transactions.
 
